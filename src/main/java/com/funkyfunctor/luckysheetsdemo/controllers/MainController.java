@@ -22,14 +22,15 @@ public class MainController {
   public String initialJsonData(HttpServletRequest httpServletRequest) {
     val parameters = HashMap.ofAll(httpServletRequest.getParameterMap());
     val paramsLog = listAllParameters(parameters);
-    System.out.printf("Called '/data/initialdata.json' \n\n%s\n\n", paramsLog);
+    //System.out.printf("Called '/data/initialdata.json' \n\n%s\n\n", paramsLog);
     return InitialLoadData.getWorksheetData();
   }
 
   @PostMapping("/data/sheetData")
   public String sheetData(HttpServletRequest httpServletRequest) {
     val parameters = HashMap.ofAll(httpServletRequest.getParameterMap());
-
+    val paramsLog = listAllParameters(parameters);
+    System.out.printf("Called '/data/sheetData' \n\n%s\n\n", paramsLog);
     val workbookId = parameters.getOrElse("gridKey", new String[0]);
     val worksheetId = parameters.getOrElse("index", new String[0]);
 
